@@ -1,0 +1,21 @@
+.button-col {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .ion-button {
+    display: inline-block;
+    padding: 8px 16px; /* Ajusta el espaciado interno según tus preferencias */
+    font-size: 14px; /* Tamaño de fuente */
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Ajusta el radio del borde según tus preferencias */
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    cursor: pointer;
+  }
+  
+  .ion-button:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el mouse */
+  }
