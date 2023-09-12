@@ -14,7 +14,7 @@
               <p>{{ ramo.profesor }}</p>
             </ion-col>
             <ion-col size="2" class="button-col">
-              <a href="{{ramo.url}}" class="ion-button ion-button-small">Ir a la página del ramo</a>
+              <ion-button  expand="full" (click)="navigateToClass(ramo.id)">Ir</ion-button>
             </ion-col>
           </ion-row>
         </ion-card-content>

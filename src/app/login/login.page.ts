@@ -46,7 +46,7 @@ export class LoginPage implements OnInit {
   }
 
   goToPage(page: string) {
-    this.router.navigate(["/student-classes"])
+    this.router.navigate([page])
   }
 
   createToast(title: string, msg: string, pos: any, dur: number) {

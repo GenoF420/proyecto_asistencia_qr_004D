@@ -21,8 +21,8 @@ export class StudentClassesPage implements OnInit {
   ];
   
 
-  goToPage(page: any) {
-    this.router.navigate(page)
+  navigateToClass(classID: number) {
+    this.router.navigate(['/student-class'])
   }
 
   constructor(private router: Router) { }
