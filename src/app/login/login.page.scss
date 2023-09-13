@@ -21,6 +21,7 @@
     width: 75%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 1rem;
   }
   
   .forgot-password {
@@ -33,9 +34,11 @@
   .forgot-password-link {
     color: #007bff;
     text-decoration: underline;
+
   }
   
   .forgot-password-link:hover {
     color: #0056b3;
     text-decoration: underline;
+    
   }
