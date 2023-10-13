@@ -1,7 +1,7 @@
 {
-  "name": "Asistencia",
+  "name": "QRDuoc",
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular-standalone"
+  "type": "angular"
 }
