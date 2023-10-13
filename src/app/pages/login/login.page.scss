@@ -1,0 +1,44 @@
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo {
+    text-align: center;
+    max-width: 19.9375rem;
+    max-height: 4.9375rem;
+    margin-bottom: 15%; 
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .custom-input {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem; 
+  }
+  
+  .forgot-password {
+    display: flex;
+    justify-content: flex-end; /* Alinea a la derecha */
+    margin-top: 10px;
+    width: 75%; /* Establece el ancho para que coincida con los demás elementos */
+  }
+  
+  .forgot-password-link {
+    color: #007bff;
+    text-decoration: underline;
+
+  }
+  
+  .forgot-password-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    
+  }
