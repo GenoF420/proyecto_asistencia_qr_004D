@@ -18,13 +18,18 @@ export class ApiService {
       password : password
     } 
 
-    this.http.post(this.url+"/auth", data).subscribe((r) => {
-      console.log(r);
+    this.http.post(this.url+"/auth", data).subscribe(
+    {
+      next: (res) => {
+        console.log(res);
+      }, 
+      error:error => console.log(error),
+      complete: () => console.log("Complete")
     })
 
     return false;
   }
-  delete(resourceId:number, authToken:string): Observable<any>{
+  logout(resourceId:number, authToken:string): Observable<any>{
     const url = `${this.url}/recurso/${resourceId}`;
 
     

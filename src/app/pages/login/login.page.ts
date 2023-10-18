@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
       console.log("Es valido")
       // La cuenta es válida, puedes redirigir al usuario según el tipo de cuenta (account.type)
     }else{
-      console.log("no es valida");
+      console.log("no es valida :C");
     }   
   }
 
