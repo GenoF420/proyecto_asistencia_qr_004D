@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
     this.api.login(username, password).subscribe({
       next: (resp: boolean) => {
         if (resp) {
-          console.log("Válido");
+          this.router.navigate(["/dashboard"])
         } else {
           this.createToast("", "Hubo un error ingresando a tu cuenta.", "top", 3000);
         }
