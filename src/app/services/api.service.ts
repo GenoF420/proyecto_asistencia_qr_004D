@@ -1,9 +1,43 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, retry } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  url='https://duoc-qr.hinotori.moe'
+  
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
+  login(username:String, password:String): boolean { 
+  
+    let data = {
+      email: username, 
+      password : password
+    } 
+
+    this.http.post(this.url+"/auth", data).subscribe(
+    {
+      next: (res) => {
+        console.log(res);
+      }, 
+      error:error => console.log(error),
+      complete: () => console.log("Complete")
+    })
+
+    return false;
+  }
+  logout(resourceId:number, authToken:string): Observable<any>{
+    const url = `${this.url}/recurso/${resourceId}`;
+
+    
+    const headers= new HttpHeaders({
+      'Authorization': `Bearer ${authToken}`
+    });
+
+   
+    return this.http.delete(url, {headers});
+  }
 }
