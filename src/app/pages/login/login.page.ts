@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -23,14 +24,19 @@ export class LoginPage implements OnInit {
     let username = new String(usernameInput.value);
     let password = new String(passwordInput.value);
 
-    
+    this.api.login(username, password).subscribe({
+      next: (resp: boolean) => {
+        if (resp) {
+          console.log("Válido");
+        } else {
+          this.createToast("", "Hubo un error ingresando a tu cuenta.", "top", 3000);
+        }
+      },
+      error: (error: any) => {
+        this.createToast("", "Hubo un error comunicandonos con la API.", "top", 3000);
+      }
+    });
 
-    if (this.api.login(username,password)) {
-      console.log("Es valido")
-      // La cuenta es válida, puedes redirigir al usuario según el tipo de cuenta (account.type)
-    }else{
-      console.log("no es valida :C");
-    }   
   }
 
   goToPage(page: string) {
@@ -49,7 +55,6 @@ export class LoginPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

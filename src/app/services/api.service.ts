@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, retry } from 'rxjs';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable, catchError, map, of } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { StorageService } from '../services/storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,26 +10,28 @@ import { HttpHeaders } from '@angular/common/http';
 export class ApiService {
   url='https://duoc-qr.hinotori.moe'
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storage:StorageService) { }
 
-  login(username:String, password:String): boolean { 
+  login(username:String, password:String): Observable<boolean> { 
   
     let data = {
       email: username, 
       password : password
     } 
 
-    this.http.post(this.url+"/auth", data).subscribe(
-    {
-      next: (res) => {
-        console.log(res);
-      }, 
-      error:error => console.log(error),
-      complete: () => console.log("Complete")
-    })
-
-    return false;
+    return this.http.post(this.url + '/auth', { "email": username, "password": password }, { observe: 'response' }).pipe(
+      map((response: HttpResponse<any>) => {
+        if (response.status === 200) {
+          this.storage.set("access_token", response.body["access_token"]);
+          return true;
+        } else {
+          return false;
+        }
+      }),
+      catchError(() => of(false))
+    );
   }
+
   logout(resourceId:number, authToken:string): Observable<any>{
     const url = `${this.url}/recurso/${resourceId}`;
 
