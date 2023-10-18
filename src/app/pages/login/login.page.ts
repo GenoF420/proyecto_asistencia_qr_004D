@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
 
 
   login() {
-    const usernameInput = document.getElementById('username') as HTMLIonInputElement;
+    const usernameInput = document.getElementById('email') as HTMLIonInputElement;
     const passwordInput = document.getElementById('password') as HTMLIonInputElement;
 
     let username = new String(usernameInput.value);
