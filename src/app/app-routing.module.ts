@@ -16,6 +16,14 @@ const routes: Routes = [
     canActivate: [ApiGuard]
   },
   {
+    path: 'class/:id',
+    loadChildren: () => import('./pages/class/class.module').then( m => m.ClassPageModule)
+  },
+  {
+    path: 'class/:id/qr',
+    loadChildren: () => import('./pages/class/qr/qr.module').then( m => m.QrPageModule)
+  },
+  {
     path: 'forgot-password',
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule),
   },
@@ -29,6 +37,7 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
+
 ];
 
 @NgModule({

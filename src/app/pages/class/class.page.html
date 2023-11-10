@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dashboard/classes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles del Ramo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ramo-title">{{ nombreRamo }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content class="asistencia-card">
+      <ion-row>
+        <ion-col size="8">
+          <p>Asistencia</p>
+        </ion-col>
+        <ion-col size="4" class="asistencia-porcentaje">
+          <ion-text>25%</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Lista de Asistencia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let asistencia of listaAsistencia">
+          <ion-label class="fecha-label">{{ asistencia.fecha }}</ion-label>
+          <ion-label class="estado-label" [ngClass]="asistencia.asistente ? 'asistente' : 'inasistente'">
+            {{ asistencia.asistente ? 'Asistente' : 'Inasistente' }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="./qr">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
