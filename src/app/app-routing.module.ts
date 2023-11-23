@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/class/class.module').then( m => m.ClassPageModule)
   },
   {
-    path: 'class/:id/qr',
-    loadChildren: () => import('./pages/class/qr/qr.module').then( m => m.QrPageModule)
-  },
-  {
     path: 'forgot-password',
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule),
   },

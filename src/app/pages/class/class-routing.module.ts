@@ -8,10 +8,6 @@ const routes: Routes = [
     path: '',
     component: ClassPage
   },
-  {
-    path: 'qr',
-    loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule)
-  }
 ];
 
 @NgModule({
