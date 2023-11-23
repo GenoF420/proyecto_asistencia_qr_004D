@@ -63,8 +63,8 @@ export class ClassPage implements OnInit {
         this.createToast("Asistencia Registrada.", "Fecha: " + formattedDate + " registrada.", "top", 3000);
         this.listaAsistencia.push(asistencia);
       }
-      
-      this.listaAsistencia.push();
+    } else {
+      this.createToast("Token Invalido.", "", "top", 3000);
     }
   }
 
