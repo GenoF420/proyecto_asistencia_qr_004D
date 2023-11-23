@@ -49,10 +49,23 @@ export class ClassPage implements OnInit {
       return;
     }
     const { barcodes } = await BarcodeScanner.scan();
-    //This bardcode should be communicating with the api
-    this.barcodes.push(...barcodes);
     const lastScannedBarcode = barcodes[barcodes.length - 1];
-    this.createToast("QR Leido, ahora falta implementar la API", "Valor:" + lastScannedBarcode.displayValue, "top", 3000);
+
+    if (lastScannedBarcode.displayValue === "TokenSecreto") {
+      const today = new Date();
+      const formattedDate = today.toISOString().split('T')[0]; // Get today's date in 'YYYY-MM-DD' format
+
+      let asistencia = { fecha: formattedDate, asistente: true };
+
+      if (this.listaAsistencia.some(entry => entry.fecha === asistencia.fecha && entry.asistente)) {
+        this.createToast("Asistencia ya registrada.", "La asistencia de la fecha: " + formattedDate + " ya se encuentra registrada.", "top", 3000);
+      } else {
+        this.createToast("Asistencia Registrada.", "Fecha: " + formattedDate + " registrada.", "top", 3000);
+        this.listaAsistencia.push(asistencia);
+      }
+      
+      this.listaAsistencia.push();
+    }
   }
 
   createToast(title: string, msg: string, pos: any, dur: number) {
